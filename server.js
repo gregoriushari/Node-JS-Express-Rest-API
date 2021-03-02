@@ -12,9 +12,10 @@ app.get("/", (req, res)=>{
     res.json({message : "Welcome to my app"});
 });
 
-app.listen(3000,()=>{
-    console.log("Running in port 3000");
+require("./app/routes/customer.routes.js")(app);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });
 
-require("./app/routes/customer.routes.js")(app);
-app.listen();
+
